@@ -25,3 +25,5 @@ nano ply.yml
 ls
 ansible-playbook ply.yml
 su ansible
+ls
+su ansible
