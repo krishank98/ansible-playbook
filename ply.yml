@@ -1,0 +1,17 @@
+---
+ - hosts: dev
+   user: ansible
+   become: yes
+   connection: ssh
+   vars:
+           pkgname: apache2
+   tasks:
+           - name: install '{{pkgname}}'
+             action: apt pkg='{{pkgname}}' state=present
+             notify: restart '{{pkgname}}'
+           - name: create file
+             file: path="/var/www/html/1.html" state=touch
+
+   handlers:
+           - name: restart '{{pkgname}}'
+             action: service name='{{pkgname}}' state=restarted

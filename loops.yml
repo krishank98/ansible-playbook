@@ -1,0 +1,12 @@
+---
+ - hosts: dev
+   user: ansible
+   become: yes
+   connection: ssh
+   tasks:
+           - name: add a list of users
+             action: user name='{{item}}' state=present
+             with_items:
+                     - lkh
+                     - jdh
+                     - jdhd
